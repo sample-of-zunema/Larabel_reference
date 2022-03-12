@@ -26,7 +26,7 @@ class RegisterController extends Controller
     $user = User::create([
       'name' => $request->name,
       'email' => $request->email,
-      'password' => $Hash::make($request->password),
+      'password' => Hash::make($request->password),
     ]);
 
     return view('regist.complete', compact('user'));
