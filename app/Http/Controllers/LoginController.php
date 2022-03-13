@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controllers
 {
+  // auth.loginテンプレートを読み込む
   public function index()
   {
     return view('auth.login');
   }
 
+  // 引数でログイン処理、ホームへリダイレクトする（ログイン不可の場合、メッセージとともにログイン画面へ）
   public function authenticate(Request $request)
   {
     $credentials = $request->only('email', 'password');
@@ -28,5 +30,14 @@ class LoginController extends Controllers
     return back()->withErrors([
       'message' => 'メールアドレスまたはパスワードが正しくありません。',
       ]);
+  }
+
+  // ログアウト機能
+  public function logout(Request $request)
+  {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect(RouteServiceProvider::HOME);
   }
 }
