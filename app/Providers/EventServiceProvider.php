@@ -16,7 +16,10 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         Registered::class => [
-            SendEmailVerificationNotification::class,
+            // 下記はデフォルトだったためコメントアウト
+            // SendEmailVerificationNotification::class
+            // リスナーファイル生成
+            'App\Listeners\RegisteredListener',
         ],
     ];
 
