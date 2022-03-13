@@ -31,10 +31,11 @@ Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store
 // ログイン機能のルーティング
 Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])
     ->middleware('guest')
-    ->name('login')
+    ->name('login');
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate'])
-    ->middleware('guest')
+    ->middleware('guest');
+
 // ログアウト機能のルーティング
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])
     ->middleware('auth')
-    ->name('logout')
+    ->name('logout');

@@ -8,7 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controllers
+class LoginController extends Controller
 {
   // auth.loginテンプレートを読み込む
   public function index()
