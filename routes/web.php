@@ -41,4 +41,4 @@ Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])
     ->name('logout');
 
 // 自作用
-Route::get('/trining', [App\Controllers\TriningController::class, 'trining'])
+Route::get('/training', [App\Http\Controllers\TrainingController::class, 'training']);

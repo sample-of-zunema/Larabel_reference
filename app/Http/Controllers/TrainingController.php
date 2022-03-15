@@ -6,10 +6,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TriningController extends Controller
+class TrainingController extends Controller
 {
-  public function tri()
+  public function training()
   {
-    echo '練習成功！！'；
+    echo '練習成功！！';
   }
 }
