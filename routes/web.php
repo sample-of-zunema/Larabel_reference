@@ -39,3 +39,6 @@ Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticat
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
+
+// 自作用
+Route::get('/trining', [App\Controllers\TriningController::class, 'trining'])
