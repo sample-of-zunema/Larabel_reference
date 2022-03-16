@@ -8,8 +8,23 @@ use Illuminate\Http\Request;
 
 class TrainingController extends Controller
 {
+
+  protected $tri;
+
+  public function __construct($tri = '練習')
+  {
+    $this->tri = $tri;
+  }
+
   public function training()
   {
-    echo '練習成功！！';
+    return $this->tri;
   }
 }
+
+app()->bind(TrainingController::class, function(){
+  return new TrainingController();
+});
+
+$tricls = app()->make(TrainingController::class);
+$tri_2 = $tricls->training();

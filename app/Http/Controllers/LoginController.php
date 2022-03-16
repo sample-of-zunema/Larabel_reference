@@ -41,3 +41,7 @@ class LoginController extends Controller
     return redirect(RouteServiceProvider::HOME);
   }
 }
+
+// ※練習用（TrainingControllerの関数をサービスコンテナの解決で呼び出してる）
+$tricls = app()->make(TrainingController::class);
+echo ($tricls->training());
