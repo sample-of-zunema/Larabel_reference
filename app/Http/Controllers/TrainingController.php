@@ -11,7 +11,7 @@ class TrainingController extends Controller
 
   protected $tri;
 
-  public function __construct($tri = '練習')
+  public function __construct($tri = 'バインド成功！')
   {
     $this->tri = $tri;
   }
