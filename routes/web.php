@@ -25,8 +25,17 @@ Route::get('/home', function() {
 Route::get('/register', [App\Http\Controllers\RegisterController::class, 'create'])
     ->middleware('guest')
     ->name('register');
-Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])
-    ->middleware('guest');
+// Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])
+//     ->middleware('guest');
+// ↑バリデーション実装のため↓へ変更
+Route::post('/user/register', 'App\Http\Controllers\UserController@register');
+
+// // RegisterControllerのルーティング
+// Route::get('/userRegister', [App\Http\Controllers\UserController::class, 'register'])
+//     ->middleware('guest')
+//     ->name('userRegister');
+// Route::post('/userRegister', [App\Http\Controllers\UserController::class, 'store'])
+//     ->middleware('guest');
 
 // ログイン機能のルーティング
 Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])
