@@ -17,7 +17,7 @@ class UserController extends Controller
         // var_dump($name);
 
         $rules = [
-            'name' => ['required', 'max:20', 'ascii_alpha'],
+            'name' => ['required', 'max:20'],
             'email' => ['required', 'email', 'max:255'],
         ];
 
