@@ -6,20 +6,31 @@
   <title>ユーザー登録フォーム</title>
 </head>
 <body>
+  <h1>ユーザー登録フォーム</h1>
+  <ul>
+  @if (count($errors)>0)
+    @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+    @endforeach
+  @endif
+  <!-- @if ($errors->has('name'))
+    {{ $errors->first('name') }}<br />
+  @endif -->
+  </ul>
   <form name="registform" action="/user/register" method="post" id="registform">
     {{ csrf_field() }}
     <dl>
       <dt>名前:</dt>
       <dd>
         <input type="text" name="name" size="30">
-        <span>{{ $errors->first('name') }}</span>
+        <!-- <span>{{ $errors->first('name') }}</span> -->
       </dd>
     </dl>
     <dl>
       <dt>メールアドレス:</dt>
       <dd>
         <input type="text" name="email" size="30">
-        <span>{{ $errors->first('email') }}</span>
+        <!-- <span>{{ $errors->first('email') }}</span> -->
       </dd>
     </dl>
     <dl>
