@@ -17,7 +17,7 @@
     {{ $errors->first('name') }}<br />
   @endif -->
   </ul>
-  <form name="registform" action="/user/register" method="post" id="registform">
+  <form name="registform" action="register" method="post" id="registform">
     {{ csrf_field() }}
     <dl>
       <dt>名前:</dt>
