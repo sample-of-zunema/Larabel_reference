@@ -16,5 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call(AuthorsTableSeeder::class);
+        // publishersテーブルに50件のレコードを作成する
+        \App\Models\Publisher::factory(50)->create();
     }
 }
