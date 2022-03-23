@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+// declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
@@ -35,9 +35,7 @@ class HeaderDumper
                 'header' => strval($request->headers)
             ]
         );
-        // ヘッダー関数を利用する場合は以下の通り
-        // info('request', ['header' => strval($request->headers)]);
-        $response $next($request);
+        $response = $next($request);
         $this->logger->info(
             'response',
             [
