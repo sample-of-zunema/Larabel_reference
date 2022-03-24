@@ -12,4 +12,10 @@ class Book extends Model
     {
         return $this->hasOne('\App\Models\Bookdetail');
     }
+
+    // belongsToメソッドによるリレーション定義（Book.php）
+    public function author()
+    {
+        return $this->belongsTo('\App\Models\Author');
+    }
 }
