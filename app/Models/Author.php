@@ -160,4 +160,7 @@ class Author extends Model
     $author->save();
 
 
+    // 5. 論理削除を利用する
+    
+
 }
