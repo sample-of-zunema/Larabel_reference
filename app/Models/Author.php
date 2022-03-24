@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;  //5. の論理削除の為に追加
 
 class Author extends Model
 {
@@ -161,6 +162,14 @@ class Author extends Model
 
 
     // 5. 論理削除を利用する
-    
+    // SoftDeletesトレイトの定義
+    use SoftDeletes;
+
+    // 論理削除データも含めたデータ操作
+    // 削除済みのレコードも含めて取得する
+    $authors = \App\Models\Author::withTrashed()->get();
+
+    // 削除済みレコードのみ取得する
+    $deleted_authors = \App\Models\Author::onlyTrashed()->get();
 
 }
