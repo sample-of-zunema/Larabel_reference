@@ -147,5 +147,17 @@ class Author extends Model
     $author->save();
 
 
-    
+    // 4. 「データがない場合のみ登録」をシンプルに実装する
+    // データがない場合のみデータを登録する
+    $author = \App\Models\Author::where('name', '著書A')->first();
+    if (empty($author)) {
+        $author = \App\Models\Author::create(['name' => '著者A']);
+    }
+    // firstOrCreateメソッドの利用
+    $author = \App\Models\Author::firstOrCreate(['name' => '著者A']);
+    // firstOrNewメソッドの利用
+    $author = \App\Models\Author::firstOrNew(['name' => '著者A']);
+    $author->save();
+
+
 }
