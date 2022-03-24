@@ -14,6 +14,11 @@ class Author extends Model
     {
         return $this->hasMany('\App\Models\Book');
     }
+    // リレーション定義されたカラムの呼び出し方
+    $author = \App\Models\Author::find(1);
+    foreach ($author->books as $book) {  // Authorモデルから書籍名を取得する
+        echo $book->name;
+    }
 
     // // t_authorテーブルを関連づける
     // protected $table = 't_author';
