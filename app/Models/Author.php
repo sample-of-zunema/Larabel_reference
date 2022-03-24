@@ -113,6 +113,13 @@ class Author extends Model
                     ->get();
 
 
-    
+    // 2. 結果をJSONで取得する
+    // データ抽出の結果をJSON形式て取得する
+    $author = \App\Models\Author::find(1);
+    return $author->toJson();
+    // toJsonメソッドの取得結果
+    {"id":1,"name":"著者名1","kana":"チョシャメイ1","created_at":"2022-03-23 22:52:00","updated_at":"2022-03-23 22:52:00"}
 
+
+    
 }
