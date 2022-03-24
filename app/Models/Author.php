@@ -121,5 +121,31 @@ class Author extends Model
     {"id":1,"name":"著者名1","kana":"チョシャメイ1","created_at":"2022-03-23 22:52:00","updated_at":"2022-03-23 22:52:00"}
 
 
+    // 3. カラムの値に対して固定の編集を加える
+    // Authorクラスにアクセサとミューテータを定義する
+    public function getKanaAttribute(string $value): string
+    {
+        //KANAカラムの値を半角カナに変換
+        return mb_convert_kana($value, "k");
+    }
+    public function setKanaAttribute(string $value): void
+    {
+        // KANAカラムの値を全角カナに変換
+        $this->attributes['kana'] = mb_convert_kana($value, "KV");
+    }
+
+    // アクセサやミューテータが定義されたカラムの利用
+    // データ取得時
+    $authors = \App\Models\Author::all();
+    foreach ($authors as $author) {
+        echo $author->kana;  // 半角カナの値が返される
+    }
+    // データ登録時
+    $author = new \App\Models\Author();
+    $author->name = $request->input('name');
+    $author->name = $request->input('kana'); // 登録時に全角カナに変換される
+    $author->save();
+
+
     
 }
