@@ -10,6 +10,11 @@ class Author extends Model
 {
     use HasFactory;
 
+    public function books()
+    {
+        return $this->hasMany('\App\Models\Book');
+    }
+
     // // t_authorテーブルを関連づける
     // protected $table = 't_author';
     // // テーブルの主キーを　id　ではなく　author_id　とする
