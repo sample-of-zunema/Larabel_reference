@@ -183,7 +183,9 @@ class Author extends Model
     // 削除済みレコードのみ取得する
     $deleted_authors = \App\Models\Author::onlyTrashed()->get();
 
+
     // 5-3-6 実行されるSQLの確認
+
     // 1. 適用されるSQL文の取得
     $sql = \App\Models\Author::where('name', '=', '著者A')->toSql();
     // 2. 上記のtoSqlメソッドで取得できるSQL文
@@ -199,16 +201,16 @@ class Author extends Model
     // SQL保存を無効化
     DB::disableQueryLog();
 
-    // 4. getQueryLogメソッドにより取得できるSQL文
-    array:1 [
-        0 => array:3 [
-            "query" => "select * from 'authors' where 'authors'.'id' in (?, ?, ?)"
-            "bindings" => array:3 [
-                0 => 1
-                1 => 3
-                2 => 5
-            ]
-            "time" => 11.55
-        ]
-    ]
+    // // 4. getQueryLogメソッドにより取得できるSQL文
+    // array:1 [
+    //     0 => array:3 [
+    //         "query" => "select * from 'authors' where 'authors'.'id' in (?, ?, ?)"
+    //         "bindings" => array:3 [
+    //             0 => 1
+    //             1 => 3
+    //             2 => 5
+    //         ]
+    //         "time" => 11.55
+    //     ]
+    // ]
 }
