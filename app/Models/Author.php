@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;  //5. の論理削除の為に追加
+use Illuminate\Aupport\Facades\DB;  //SQL取得のため追加
 
 class Author extends Model
 {
@@ -182,4 +183,32 @@ class Author extends Model
     // 削除済みレコードのみ取得する
     $deleted_authors = \App\Models\Author::onlyTrashed()->get();
 
+    // 5-3-6 実行されるSQLの確認
+    // 1. 適用されるSQL文の取得
+    $sql = \App\Models\Author::where('name', '=', '著者A')->toSql();
+    // 2. 上記のtoSqlメソッドで取得できるSQL文
+    select * from 'authors' where 'name' = ?
+
+    // 3. getQueryLogによるSQLの取得
+    // SQL保存を有効化する
+    DB::enableQueryLog();
+    // データ操作実行
+    $author = \App\Models\Author::find([1,3,5]);
+    // クエリを取得する
+    $queries = DB::getQueryLog();
+    // SQL保存を無効化
+    DB::disableQueryLog();
+
+    // 4. getQueryLogメソッドにより取得できるSQL文
+    array:1 [
+        0 => array:3 [
+            "query" => "select * from 'authors' where 'authors'.'id' in (?, ?, ?)"
+            "bindings" => array:3 [
+                0 => 1
+                1 => 3
+                2 => 5
+            ]
+            "time" => 11.55
+        ]
+    ]
 }
