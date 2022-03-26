@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// 5.5.2.4. エンドポイントの追加
+Route::post('/publishers', [App\Http\Controllers\PublisherAction::class, 'create']);
