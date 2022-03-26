@@ -1,5 +1,5 @@
 <?php
-// PublisherActionコントローラクラスの実装
+// 5.5.2.3. PublisherActionコントローラクラスの実装
 
 namespace App\Http\Controllers;
 
