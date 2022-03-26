@@ -1,5 +1,5 @@
 <?php
-// ビジネスロジックを受け持つPublisherServiceクラス
+// 5.5.2.2. ビジネスロジックを受け持つPublisherServiceクラス
 
 namespace App\Services;
 
