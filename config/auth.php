@@ -35,10 +35,18 @@ return [
     |
     */
 
+    // 6.2.0.1. api_tokenの設定追加
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'user_token',
+            'input_key' => 't',
+            'storage_key' => 'token',
+            'hash' => true,
         ],
     ],
 
